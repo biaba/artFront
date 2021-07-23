@@ -1,0 +1,50 @@
+<div class="col-md-6 offset-md-3 mt-5">
+  <div class="alert alert-info">
+    <h4>Search Living Artists</h4>
+    <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+
+      <label>
+        Artist:<br>
+        <input type="text" formControlName="artist">
+        <div class="alert-danger" *ngIf="searchForm.controls['artist'].errors?.usernameNotExists">
+      This username does not exist!
+    </div>
+      </label><br>
+
+      <label>
+        ArtName:<br>
+        <input type="text" formControlName="artName">
+        <div class="alert-danger" *ngIf="searchForm.controls['artName'].errors?.imagenameNotExists">
+      This artwork name does not exist!
+    </div>
+      </label><br>
+
+      <label>
+        Artwork displayed for sale:
+        <select class="form-control" formControlName="forSale">
+          <option *ngFor="let fs of forSales" [value]="fs.value">{{fs.display}}</option>
+        </select>
+
+      </label><br>
+
+      <label>
+        Category:
+        <select class="form-control" formControlName="category">
+          <option *ngFor="let c of categories" [value]="c">{{c}}</option>
+        </select>
+
+      </label><br>
+      <button (click)="onSearch()">Search</button><br>
+    </form>
+  </div>
+</div><br>
+<i>If no criteria chosen all artwork will be displayed</i>
+
+<div *ngIf="images" class="card mt-4">
+  <h4 class="card-header">Search Results</h4>
+  <div class="card-body">
+    <ul *ngIf="images">
+      <li *ngFor="let i of images">{{i.name}} {{i.fileUrl}}</li>
+    </ul>
+  </div>
+</div>

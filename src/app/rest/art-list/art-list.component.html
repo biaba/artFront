@@ -1,0 +1,22 @@
+<br>
+<div [ngClass]="{'alert-danger': message}">{{message}}</div>
+<div *ngIf="message">
+	<app-rest></app-rest>
+</div>
+
+<div *ngIf="images.length>1" class="card mt-4">
+	<h4 class="card-header">I M A G E S</h4>
+	<div class="card-body">
+
+		<table style="width:100%">
+			<tr>
+				<th>Artist</th>
+				<th>Image</th>
+			</tr>
+				<tr *ngFor="let i of images; index as inx">
+					<td>{{i.artistDisplayName? i.artistDisplayName : 'Unknown Artist' }}</td>
+					<td><a><img class="imag" src="{{i.primaryImageSmall}}" height="150px" (click)="goToDetails(inx)" ></a></td>
+				</tr>		
+		</table>		
+	</div>
+</div>

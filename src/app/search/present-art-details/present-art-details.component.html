@@ -1,0 +1,54 @@
+<div class="card mt-4">
+	<h4 class="card-header" style="background-color: lavender">I M A G E</h4>
+	<div class="card-body">
+
+		<table style="width:100%">
+			<tr>
+				<h4>
+					<td>Title: {{image[theId].name}} 
+					<a *ngIf="theUser" title="{{isFavourite ? 'remove from favourites':'add to favourites'}}" (click)="removeOrAdd()">
+						<span class="material-icons">{{isFavourite ? 'favorite':'favorite_border'}}</span>
+					</a>
+					</td>					
+				</h4>
+            </tr>
+            <tr>
+				<h4>				
+					<td><a style="color: blue" (click)="lookUpArtist()">Author: {{image[theId].creator.username }}</a></td>
+				</h4>
+			</tr>			
+			<tr>
+				<td> 
+					<a  *ngIf="image[theId].forSale" title="for sale">
+						<span class="material-icons">visibility</span>
+						<button (click)="buy()">Buy</button>
+					</a>
+					<a  *ngIf="image[theId].sold" title="sold"><span class="material-icons">visibility_off</span></a>
+					<a href="{{localFileSystem}}{{image[theId].fileUrl}}" target="_blank">
+						<img  alt="enlarge" title="enlarge" style="width: 100%" src={{localFileSystem}}{{image[theId].fileUrl}}/>
+					</a>
+				</td>           
+            </tr>
+			<tr>
+				<td>Category: {{image[theId].category }}</td>
+			</tr>
+			<tr>
+				<td>Description: {{image[theId].description }}</td>
+			</tr>
+			<tr>
+				<td>{{image[theId].forSale? 'For Sale' : 'Not for Sale' }}</td>
+			</tr>
+			<tr *ngIf="image[theId].forSale">
+				<td>{{image[theId].sold? 'sold' : 'available' }}</td>
+            </tr>
+            <tr *ngIf="image[theId].forSale && !image[theId].sold">
+				<td>Price: {{image[theId].price }}</td>
+			</tr>
+			<tr *ngIf="image[theId].sold">
+                <td><a style="color: blue" (click)="lookUpBuyer()">Bought by: {{image[theId].buyer.username}}</a></td>			
+            </tr>
+			
+		</table>
+
+	</div>
+</div>

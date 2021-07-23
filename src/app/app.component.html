@@ -1,0 +1,13 @@
+<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+	<div class="navbar-nav">
+		<a class="nav-item nav-link" routerLink="/">Search</a>
+		<a class="nav-item nav-link" *ngIf="theUser" (click)="userDetails()">My Details</a>
+		<a class="nav-item nav-link" *ngIf="!theUser" routerLink="/login">Login</a>
+		<a class="nav-item nav-link" *ngIf="theUser" (click)="logout()">Logout</a>
+	</div>
+</nav>
+<!-- main app container -->
+<div class="container">
+	<router-outlet></router-outlet>
+</div>

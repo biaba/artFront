@@ -1,0 +1,32 @@
+<br>
+<div [ngClass]="{'alert-danger': message}">{{message}}</div>
+<div *ngIf="message">
+	<app-search></app-search>
+</div>
+<div *ngIf="images.length>0" class="card mt-4">
+	<h4 class="card-header" style="background-color: cornsilk">I M A G E S</h4>
+	<div class="card-body">
+
+		<table style="width:100%">
+			<tr>
+				<th>Title</th>
+				<th>Artist</th>
+				<th>Image</th>
+			</tr>
+			<tr *ngFor="let i of images; index as inx">
+				<td>{{i.name }}
+					<a *ngIf="theUser" title="{{isFavourite(inx) ? 'remove from favourites':'add to favourites'}}">
+						<span class="material-icons" (click)="removeOrAdd(inx)">{{isFavourite(inx) ? 'favorite':'favorite_border'}}</span>
+					</a>
+				</td>
+				<td>{{i.creator.userName}}</td>
+
+				<td (click)="lookUpDetails(inx)">
+					<a *ngIf="i.forSale" title="for sale"><span class="material-icons">visibility</span></a>
+					<a *ngIf="i.sold" title="sold"><span class="material-icons">visibility_off</span></a>
+					<img src={{localFileSystem}}{{i.fileUrl}} height="150px" />
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

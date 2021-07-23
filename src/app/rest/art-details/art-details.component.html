@@ -1,0 +1,51 @@
+<div class="card mt-4">
+	<h4 class="card-header">I M A G E</h4>
+	<div class="card-body">
+
+		<table style="width:100%">
+			<tr>
+				<h4>
+					<td>{{image[theId].title }}</td>
+				</h4>
+			</tr>
+			<tr>
+				<td>Created: {{image[theId].objectBeginDate }}-{{image[theId].objectEndDate}}</td>
+			</tr>
+			<tr>
+				<td><a href="{{image[theId].primaryImage}}" target="_blank"><img  src="{{image[theId].primaryImage}}"></a></td>
+			</tr>
+			<tr>
+				<td>{{image[theId].department }}</td>
+			</tr>
+			<tr>
+				<td>{{image[theId].period }}</td>
+			</tr>
+			<tr>
+				<h4>
+					<td>{{image[theId].artistDisplayName? image[theId].artistDisplayName : 'Unknown Artist' }} <p>
+							{{image[theId].BeginDate }}-{{image[theId].EndDate}}</p>
+					</td>
+				</h4>
+			</tr>
+			<tr>
+				<td>{{image[theId].Nationality }}</td>
+			</tr>
+			<tr>
+				<td>{{image[theId].artistDisplayBio }}</td>
+			</tr>
+			<tr>
+				<td *ngIf="image[theId].artistWikidata_URL"><a href="{{image[theId].artistWikidata_URL }}" target="_blank">Artist Wiki Data</a></td>
+			</tr>
+			<tr>
+				<td *ngIf="image[theId].objectWikidata_URL"><a href="{{image[theId].objectWikidata_URL }}" target="_blank">Object Wiki Data</a></td>
+			</tr>
+			<tr>
+				<div *ngFor="let im of image[theId].additionalImages">
+					<td><a><img class="ismall" src="{{im}}"></a></td>
+				</div>
+			</tr>
+
+		</table>
+
+	</div>
+</div>

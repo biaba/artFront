@@ -1,0 +1,26 @@
+<div class="col-md-6 offset-md-3 mt-5">
+	<div class="alert alert-info">
+		<h4>Search Met Museum</h4>
+		<input type="search" (search)="searchIds($event)" placeholder="Search and enter">
+	</div>
+	<div class="card">
+		<a>
+			<h6 class="card-header" (click)="getDepartments()">List Deparments</h6>
+		</a>
+	</div>
+</div><br>
+<div *ngIf="deps" class="card mt-4">
+	<h4 class="card-header">The Metropolitan Museum of Art D E P A R T M E N T S</h4>
+	<div class="card-body">
+		<ul *ngIf="deps">
+			<li *ngFor="let dep of deps" (click)="onSelect(dep.departmentId)" [ngClass]="{ 'selected': dep.departmentId===theDep}">{{dep.displayName}}</li>
+		</ul>
+	</div>
+</div>
+<div style="text-align: justify">
+	<i>Metropolitan Museum of Art
+		Located in New York City, is the largest art museum in the United States, and one of the three largest in the
+		world, with the most significant art collections. Its permanent collection contains more than two million works,
+		divided among seventeen curatorial departments.
+	</i>
+</div>

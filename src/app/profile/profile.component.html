@@ -1,0 +1,34 @@
+<div class="card mt-4">
+	<h4 class="card-header" style="background-color: lavender">P R O F I L E</h4>
+	<div class="card-body">
+
+		<table style="width:100%">
+			<tr>
+				<h4>
+					<td>{{user.username}}</td>
+				</h4>
+			</tr>
+			<tr>
+				<td>About: {{user.about}}</td>
+			</tr>
+
+			<tr>
+				<div *ngFor="let im of images; index as inx">
+					<a  *ngIf="im.forSale" title="for sale"><span class="material-icons">visibility</span></a>
+					<a  *ngIf="im.sold" title="sold"><span class="material-icons">visibility_off</span></a>
+					<td>						
+						<a href="{{localFileSystem}}{{im.fileUrl}}" target="_blank">
+							<img class="ismall" src={{localFileSystem}}{{im.fileUrl}}/>
+						</a>						
+					</td><br>
+					<button (click)="lookUpDetails(inx)">More info</button>
+				</div>
+			</tr>
+			
+		</table>
+
+	</div>
+</div>
+
+
+
